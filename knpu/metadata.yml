@@ -1,0 +1,15 @@
+title:  Micro-Symfony Framework
+summary: Summary of Micro-Symfony Framework Tutorial
+    
+
+
+illustration: micro-symfony.png
+hasVideoDownload: 0
+
+tuts_hero:
+    start_step: start
+    finish_step: 
+
+chapters:
+    intro:
+        is_finished: false
