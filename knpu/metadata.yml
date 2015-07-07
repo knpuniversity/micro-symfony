@@ -11,5 +11,3 @@ tuts_hero:
     finish_step: 
 
 chapters:
-    intro:
-        is_finished: false
