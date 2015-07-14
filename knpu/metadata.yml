@@ -1,7 +1,23 @@
-title:  Micro-Symfony Framework
-summary: Summary of Micro-Symfony Framework Tutorial
-    
+title:  The Symfony Micro-Framework
+summary: |
+    So you love microframeworks like Silex. Yep - me too. Being able
+    to create a single file and immediately code up some routes is awesome.
 
+    But Symfony is a *big* framework, right? *Wrong*! Symfony can be as
+    small as a *single* file!
+
+    In this tutorial, we'll bootstrap a project using Symfony as a micro-framework:
+    something that looks more like Silex, but with the tools you're used to.
+    This means:
+    
+    * Small: A project structure with *very* few files
+    * Simple: Create pages by touching one file
+    * Familiar: It's still Symfony :)
+    * Powerful: Enable/disable any bundles you need
+    * Evolve: Grow from micro to full-sized as your app succeeds
+
+    So if you're next project is perfect for a micro-framework, you
+    can still use Symfony.
 
 illustration: micro-symfony.png
 hasVideoDownload: 0
