@@ -1,0 +1,85 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "bootstrap-create-composer-json",
+            "name": "Bootstrap: create composer.json",
+            "description": null
+        },
+        {
+            "id": "bootstrap-copy-app-dev-php-from-se",
+            "name": "Bootstrap: copy app_dev.php from SE",
+            "description": null
+        },
+        {
+            "id": "bootstrap-kernel-front-controller",
+            "name": "Bootstrap: Kernel & Front controller",
+            "description": null
+        },
+        {
+            "id": "bootstrap-add-bundle",
+            "name": "Bootstrap: Add Bundle",
+            "description": null
+        },
+        {
+            "id": "templating-render-template",
+            "name": "Templating: Render template",
+            "description": null
+        },
+        {
+            "id": "debug-adding-profiler-wdt",
+            "name": "Debug: Adding profiler\/wdt",
+            "description": null
+        },
+        {
+            "id": "environment-basic-dotenv-usage",
+            "name": "Environment: Basic dotenv usage",
+            "description": null
+        },
+        {
+            "id": "environment-conditional-debugging",
+            "name": "Environment: Conditional debugging",
+            "description": null
+        },
+        {
+            "id": "environment-parameters",
+            "name": "Environment: Parameters",
+            "description": null
+        },
+        {
+            "id": "console-copy-from-se",
+            "name": "Console: Copy from SE",
+            "description": null
+        },
+        {
+            "id": "console-customize-for-us",
+            "name": "Console: Customize for us",
+            "description": null
+        },
+        {
+            "id": "monolog-add-some-loggin",
+            "name": "Monolog: Add some loggin!",
+            "description": null
+        },
+        {
+            "id": "monolog-control-action-level",
+            "name": "Monolog: Control action_level",
+            "description": null
+        },
+        {
+            "id": "dump-adding-debugbundle",
+            "name": "Dump: Adding DebugBundle",
+            "description": null
+        },
+        {
+            "id": "dump-remove-dump",
+            "name": "Dump: Remove dump()",
+            "description": null
+        }
+    ],
+    "sha": "0e2983d28e760f5625898d2424987c49a82c0f90"
+}

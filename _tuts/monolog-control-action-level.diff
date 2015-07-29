@@ -1,0 +1,29 @@
+diff --git a/AppKernel.php b/AppKernel.php
+index babd47c..b031b37 100644
+--- a/AppKernel.php
++++ b/AppKernel.php
+@@ -43,6 +43,11 @@ class AppKernel extends Kernel
+                     'resource' => '%kernel.root_dir%/config/'.$routingFilename,
+                 )
+             ));
++
++            $container->setParameter(
++                'monolog_action_level',
++                $isDevEnvironment ? 'debug' : 'error'
++            );
+         });
+     }
+ }
+diff --git a/config/config.yml b/config/config.yml
+index d20877d..0c84c6f 100644
+--- a/config/config.yml
++++ b/config/config.yml
+@@ -9,7 +9,7 @@ monolog:
+     handlers:
+         main:
+             type:         fingers_crossed
+-            action_level: debug
++            action_level: %monolog_action_level%
+             handler:      nested
+         nested:
+             type:  stream

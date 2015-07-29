@@ -1,0 +1,97 @@
+diff --git a/.gitignore b/.gitignore
+index 57872d0..aaeec82 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1 +1,2 @@
+ /vendor/
++/cache/
+diff --git a/AppKernel.php b/AppKernel.php
+new file mode 100644
+index 0000000..2da7e3a
+--- /dev/null
++++ b/AppKernel.php
+@@ -0,0 +1,23 @@
++<?php
++
++use Symfony\Component\HttpKernel\Kernel;
++use Symfony\Component\Config\Loader\LoaderInterface;
++
++class AppKernel extends Kernel
++{
++    public function registerBundles()
++    {
++        $bundles = array(
++            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
++            new \Symfony\Bundle\TwigBundle\TwigBundle(),
++            new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
++        );
++
++        return $bundles;
++    }
++
++    public function registerContainerConfiguration(LoaderInterface $loader)
++    {
++        $loader->load(__DIR__.'/config/config.yml');
++    }
++}
+diff --git a/config/config.yml b/config/config.yml
+new file mode 100644
+index 0000000..1f80553
+--- /dev/null
++++ b/config/config.yml
+@@ -0,0 +1,6 @@
++framework:
++    secret: ABC123
++    router:
++        resource: '%kernel.root_dir%/config/routing.yml'
++    templating:
++        engines: [twig]
+diff --git a/config/routing.yml b/config/routing.yml
+new file mode 100644
+index 0000000..e69de29
+diff --git a/web/index.php b/web/index.php
+index e0279c2..7d0d591 100644
+--- a/web/index.php
++++ b/web/index.php
+@@ -1,30 +1,23 @@
+ <?php
+-
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\Debug\Debug;
+ 
+-// If you don't want to setup permissions the proper way, just uncomment the following PHP line
+-// read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
+-//umask(0000);
++umask(0000);
+ 
+-// This check prevents access to debug front controllers that are deployed by accident to production servers.
+-// Feel free to remove this, extend it, or make something more sophisticated.
+-if (isset($_SERVER['HTTP_CLIENT_IP'])
+-    || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
+-    || !(in_array(@$_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'fe80::1', '::1')) || php_sapi_name() === 'cli-server')
+-) {
+-    header('HTTP/1.0 403 Forbidden');
+-    exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
+-}
++// configuration
++$env = 'dev';
++$debug = true;
+ 
+-$loader = require_once __DIR__.'/../app/bootstrap.php.cache';
+-Debug::enable();
++$loader = require_once __DIR__.'/../vendor/autoload.php';
++require_once __DIR__.'/../AppKernel.php';
+ 
+-require_once __DIR__.'/../app/AppKernel.php';
++if ($debug) {
++    Debug::enable();
++}
+ 
+-$kernel = new AppKernel('dev', true);
+-$kernel->loadClassCache();
++$kernel = new AppKernel($env, $debug);
+ $request = Request::createFromGlobals();
++
+ $response = $kernel->handle($request);
+ $response->send();
+ $kernel->terminate($request, $response);

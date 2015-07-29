@@ -1,0 +1,100 @@
+diff --git a/AppBundle/AppBundle.php b/AppBundle/AppBundle.php
+new file mode 100644
+index 0000000..05123b6
+--- /dev/null
++++ b/AppBundle/AppBundle.php
+@@ -0,0 +1,9 @@
++<?php
++
++namespace AppBundle;
++
++use Symfony\Component\HttpKernel\Bundle\Bundle;
++
++class AppBundle extends Bundle
++{
++}
+diff --git a/AppBundle/Controller/DefaultController.php b/AppBundle/Controller/DefaultController.php
+new file mode 100644
+index 0000000..776d7bc
+--- /dev/null
++++ b/AppBundle/Controller/DefaultController.php
+@@ -0,0 +1,17 @@
++<?php
++
++namespace AppBundle\Controller;
++
++use Symfony\Component\HttpFoundation\Response;
++use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
++
++class DefaultController
++{
++    /**
++     * @Route("/")
++     */
++    public function homepage()
++    {
++        return new Response('HELLO!');
++    }
++}
+diff --git a/AppKernel.php b/AppKernel.php
+index 2da7e3a..de77819 100644
+--- a/AppKernel.php
++++ b/AppKernel.php
+@@ -11,6 +11,7 @@ class AppKernel extends Kernel
+             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+             new \Symfony\Bundle\TwigBundle\TwigBundle(),
+             new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
++            new \AppBundle\AppBundle()
+         );
+ 
+         return $bundles;
+diff --git a/composer.json b/composer.json
+index ad0c00d..24074d0 100644
+--- a/composer.json
++++ b/composer.json
+@@ -9,5 +9,10 @@
+             "name": "Ryan Weaver",
+             "email": "ryan@thatsquality.com"
+         }
+-    ]
++    ],
++    "autoload": {
++        "psr-4": {
++            "AppBundle\\": "AppBundle/"
++        }
++    }
+ }
+diff --git a/config/autoload.php b/config/autoload.php
+new file mode 100644
+index 0000000..056d699
+--- /dev/null
++++ b/config/autoload.php
+@@ -0,0 +1,7 @@
++<?php
++
++use Doctrine\Common\Annotations\AnnotationRegistry;
++
++$loader = require __DIR__.'/../vendor/autoload.php';
++
++AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
+diff --git a/config/routing.yml b/config/routing.yml
+index e69de29..6d36283 100644
+--- a/config/routing.yml
++++ b/config/routing.yml
+@@ -0,0 +1,3 @@
++app_annotations:
++    resource: "@AppBundle/Controller"
++    type: annotation
+diff --git a/web/index.php b/web/index.php
+index 7d0d591..61e7314 100644
+--- a/web/index.php
++++ b/web/index.php
+@@ -8,7 +8,7 @@ umask(0000);
+ $env = 'dev';
+ $debug = true;
+ 
+-$loader = require_once __DIR__.'/../vendor/autoload.php';
++$loader = require_once __DIR__.'/../config/autoload.php';
+ require_once __DIR__.'/../AppKernel.php';
+ 
+ if ($debug) {

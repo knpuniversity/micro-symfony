@@ -1,0 +1,216 @@
+diff --git a/.gitignore b/.gitignore
+index d74d526..37e5ad8 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -2,3 +2,4 @@
+ /cache/
+ .env
+ /web/bundles
++/logs
+diff --git a/AppKernel.php b/AppKernel.php
+index 0767bcc..babd47c 100644
+--- a/AppKernel.php
++++ b/AppKernel.php
+@@ -12,6 +12,7 @@ class AppKernel extends Kernel
+             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+             new \Symfony\Bundle\TwigBundle\TwigBundle(),
+             new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
++            new \Symfony\Bundle\MonologBundle\MonologBundle(),
+             new \AppBundle\AppBundle()
+         );
+ 
+diff --git a/composer.json b/composer.json
+index e2b5e6a..0523c28 100644
+--- a/composer.json
++++ b/composer.json
+@@ -3,7 +3,8 @@
+     "require": {
+         "symfony/symfony": "^2.7",
+         "sensio/framework-extra-bundle": "^3.0",
+-        "vlucas/phpdotenv": "^2.0"
++        "vlucas/phpdotenv": "^2.0",
++        "symfony/monolog-bundle": "^2.7"
+     },
+     "authors": [
+         {
+diff --git a/composer.lock b/composer.lock
+index 7f58074..d999633 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "This file is @generated automatically"
+     ],
+-    "hash": "12224b902e795d6b1e6b05aff586b6a7",
++    "hash": "d320025aeedf11b687070c3a0158de2d",
+     "packages": [
+         {
+             "name": "doctrine/annotations",
+@@ -405,6 +405,82 @@
+             "time": "2014-09-09 13:34:57"
+         },
+         {
++            "name": "monolog/monolog",
++            "version": "1.15.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/Seldaek/monolog.git",
++                "reference": "dc5150cc608f2334c72c3b6a553ec9668a4156b0"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/dc5150cc608f2334c72c3b6a553ec9668a4156b0",
++                "reference": "dc5150cc608f2334c72c3b6a553ec9668a4156b0",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=5.3.0",
++                "psr/log": "~1.0"
++            },
++            "provide": {
++                "psr/log-implementation": "1.0.0"
++            },
++            "require-dev": {
++                "aws/aws-sdk-php": "^2.4.9",
++                "doctrine/couchdb": "~1.0@dev",
++                "graylog2/gelf-php": "~1.0",
++                "php-console/php-console": "^3.1.3",
++                "phpunit/phpunit": "~4.5",
++                "phpunit/phpunit-mock-objects": "2.3.0",
++                "raven/raven": "~0.8",
++                "ruflin/elastica": ">=0.90 <3.0",
++                "swiftmailer/swiftmailer": "~5.3",
++                "videlalvaro/php-amqplib": "~2.4"
++            },
++            "suggest": {
++                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
++                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
++                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
++                "ext-mongo": "Allow sending log messages to a MongoDB server",
++                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
++                "php-console/php-console": "Allow sending log messages to Google Chrome",
++                "raven/raven": "Allow sending log messages to a Sentry server",
++                "rollbar/rollbar": "Allow sending log messages to Rollbar",
++                "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
++                "videlalvaro/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.15.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Monolog\\": "src/Monolog"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Jordi Boggiano",
++                    "email": "j.boggiano@seld.be",
++                    "homepage": "http://seld.be"
++                }
++            ],
++            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
++            "homepage": "http://github.com/Seldaek/monolog",
++            "keywords": [
++                "log",
++                "logging",
++                "psr-3"
++            ],
++            "time": "2015-07-12 13:54:09"
++        },
++        {
+             "name": "psr/log",
+             "version": "1.0.0",
+             "source": {
+@@ -498,6 +574,65 @@
+             "time": "2015-06-05 13:59:21"
+         },
+         {
++            "name": "symfony/monolog-bundle",
++            "version": "v2.7.1",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/MonologBundle.git",
++                "reference": "9320b6863404c70ebe111e9040dab96f251de7ac"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/9320b6863404c70ebe111e9040dab96f251de7ac",
++                "reference": "9320b6863404c70ebe111e9040dab96f251de7ac",
++                "shasum": ""
++            },
++            "require": {
++                "monolog/monolog": "~1.8",
++                "php": ">=5.3.2",
++                "symfony/config": "~2.3",
++                "symfony/dependency-injection": "~2.3",
++                "symfony/http-kernel": "~2.3",
++                "symfony/monolog-bridge": "~2.3"
++            },
++            "require-dev": {
++                "symfony/console": "~2.3",
++                "symfony/yaml": "~2.3"
++            },
++            "type": "symfony-bundle",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "2.7.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Bundle\\MonologBundle\\": ""
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Symfony Community",
++                    "homepage": "http://symfony.com/contributors"
++                },
++                {
++                    "name": "Fabien Potencier",
++                    "email": "fabien@symfony.com"
++                }
++            ],
++            "description": "Symfony MonologBundle",
++            "homepage": "http://symfony.com",
++            "keywords": [
++                "log",
++                "logging"
++            ],
++            "time": "2015-01-04 20:21:17"
++        },
++        {
+             "name": "symfony/symfony",
+             "version": "v2.7.2",
+             "source": {
+diff --git a/config/config.yml b/config/config.yml
+index bd9e728..d20877d 100644
+--- a/config/config.yml
++++ b/config/config.yml
+@@ -4,3 +4,14 @@ framework:
+         engines: [twig]
+     profiler:
+         enabled: %kernel.debug%
++
++monolog:
++    handlers:
++        main:
++            type:         fingers_crossed
++            action_level: debug
++            handler:      nested
++        nested:
++            type:  stream
++            path:  "%kernel.logs_dir%/%kernel.environment%.log"
++            level: debug

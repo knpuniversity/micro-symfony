@@ -1,0 +1,13 @@
+diff --git a/AppBundle/Controller/DefaultController.php b/AppBundle/Controller/DefaultController.php
+index 63d31d2..a69979a 100644
+--- a/AppBundle/Controller/DefaultController.php
++++ b/AppBundle/Controller/DefaultController.php
+@@ -18,8 +18,6 @@ class DefaultController extends ContainerAware
+             array('random' => rand(1, 100))
+         );
+ 
+-        dump($this->container->get('twig'));
+-
+         return new Response($html);
+     }
+ }

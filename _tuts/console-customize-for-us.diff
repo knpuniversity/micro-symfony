@@ -1,0 +1,46 @@
+diff --git a/.gitignore b/.gitignore
+index 18f5aa5..d74d526 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,3 +1,4 @@
+ /vendor/
+ /cache/
+ .env
++/web/bundles
+diff --git a/console b/console
+old mode 100644
+new mode 100755
+index fa6a36e..c5d3f87
+--- a/console
++++ b/console
+@@ -1,22 +1,24 @@
+ #!/usr/bin/env php
+ <?php
+ 
+-// if you don't want to setup permissions the proper way, just uncomment the following PHP line
+-// read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
+-//umask(0000);
++umask(0000);
+ 
+ set_time_limit(0);
+ 
+-require_once __DIR__.'/bootstrap.php.cache';
++require_once __DIR__.'/config/autoload.php';
+ require_once __DIR__.'/AppKernel.php';
+ 
+ use Symfony\Bundle\FrameworkBundle\Console\Application;
+ use Symfony\Component\Console\Input\ArgvInput;
+ use Symfony\Component\Debug\Debug;
+ 
++// load the environmental variables
++$dotenv = new Dotenv\Dotenv(__DIR__);
++$dotenv->load();
++$env = $_SERVER['SYMFONY_ENV'];
++$debug = $_SERVER['SYMFONY_DEBUG'];
++
+ $input = new ArgvInput();
+-$env = $input->getParameterOption(array('--env', '-e'), getenv('SYMFONY_ENV') ?: 'dev');
+-$debug = getenv('SYMFONY_DEBUG') !== '0' && !$input->hasParameterOption(array('--no-debug', '')) && $env !== 'prod';
+ 
+ if ($debug) {
+     Debug::enable();

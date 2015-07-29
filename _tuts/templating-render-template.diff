@@ -1,0 +1,60 @@
+diff --git a/AppBundle/Controller/DefaultController.php b/AppBundle/Controller/DefaultController.php
+index 776d7bc..a69979a 100644
+--- a/AppBundle/Controller/DefaultController.php
++++ b/AppBundle/Controller/DefaultController.php
+@@ -2,16 +2,22 @@
+ 
+ namespace AppBundle\Controller;
+ 
++use Symfony\Component\DependencyInjection\ContainerAware;
+ use Symfony\Component\HttpFoundation\Response;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ 
+-class DefaultController
++class DefaultController extends ContainerAware
+ {
+     /**
+      * @Route("/")
+      */
+     public function homepage()
+     {
+-        return new Response('HELLO!');
++        $html = $this->container->get('twig')->render(
++            'default/homepage.twig',
++            array('random' => rand(1, 100))
++        );
++
++        return new Response($html);
+     }
+ }
+diff --git a/Resources/views/base.html.twig b/Resources/views/base.html.twig
+new file mode 100644
+index 0000000..9089212
+--- /dev/null
++++ b/Resources/views/base.html.twig
+@@ -0,0 +1,13 @@
++<!DOCTYPE html>
++<html>
++    <head>
++        <meta charset="UTF-8" />
++        <title>{% block title %}Welcome!{% endblock %}</title>
++        {% block stylesheets %}{% endblock %}
++        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
++    </head>
++    <body>
++        {% block body %}{% endblock %}
++        {% block javascripts %}{% endblock %}
++    </body>
++</html>
+\ No newline at end of file
+diff --git a/Resources/views/default/homepage.twig b/Resources/views/default/homepage.twig
+new file mode 100644
+index 0000000..f7f8ef2
+--- /dev/null
++++ b/Resources/views/default/homepage.twig
+@@ -0,0 +1,5 @@
++{% extends 'base.html.twig' %}
++
++{% block body %}
++    <h1>Yay!</h1>
++{% endblock %}

@@ -1,0 +1,42 @@
+diff --git a/AppKernel.php b/AppKernel.php
+index de77819..3ae035d 100644
+--- a/AppKernel.php
++++ b/AppKernel.php
+@@ -14,6 +14,8 @@ class AppKernel extends Kernel
+             new \AppBundle\AppBundle()
+         );
+ 
++        $bundles[] = new \Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
++
+         return $bundles;
+     }
+ 
+diff --git a/config/config.yml b/config/config.yml
+index 1f80553..5a83e79 100644
+--- a/config/config.yml
++++ b/config/config.yml
+@@ -4,3 +4,8 @@ framework:
+         resource: '%kernel.root_dir%/config/routing.yml'
+     templating:
+         engines: [twig]
++    profiler:
++        enabled: %kernel.debug%
++
++web_profiler:
++    toolbar: %kernel.debug%
+diff --git a/config/routing.yml b/config/routing.yml
+index 6d36283..ee0f2d1 100644
+--- a/config/routing.yml
++++ b/config/routing.yml
+@@ -1,3 +1,11 @@
+ app_annotations:
+     resource: "@AppBundle/Controller"
+     type: annotation
++
++_wdt:
++    resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
++    prefix:   /_wdt
++
++_profiler:
++    resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
++    prefix:   /_profiler

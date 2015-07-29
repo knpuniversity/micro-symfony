@@ -1,0 +1,121 @@
+diff --git a/.env.example b/.env.example
+new file mode 100644
+index 0000000..b51575d
+--- /dev/null
++++ b/.env.example
+@@ -0,0 +1,3 @@
++# basic setup
++SYMFONY_ENV=dev
++SYMFONY_DEBUG=1
+diff --git a/.gitignore b/.gitignore
+index aaeec82..18f5aa5 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,2 +1,3 @@
+ /vendor/
+ /cache/
++.env
+diff --git a/composer.json b/composer.json
+index 24074d0..e2b5e6a 100644
+--- a/composer.json
++++ b/composer.json
+@@ -2,7 +2,8 @@
+     "name": "knpuniversity/micro-symfony",
+     "require": {
+         "symfony/symfony": "^2.7",
+-        "sensio/framework-extra-bundle": "^3.0"
++        "sensio/framework-extra-bundle": "^3.0",
++        "vlucas/phpdotenv": "^2.0"
+     },
+     "authors": [
+         {
+diff --git a/composer.lock b/composer.lock
+index bad9342..7f58074 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "This file is @generated automatically"
+     ],
+-    "hash": "b14388b8786de4b85096a918ebc7ab03",
++    "hash": "12224b902e795d6b1e6b05aff586b6a7",
+     "packages": [
+         {
+             "name": "doctrine/annotations",
+@@ -675,6 +675,52 @@
+                 "templating"
+             ],
+             "time": "2015-06-06 23:31:24"
++        },
++        {
++            "name": "vlucas/phpdotenv",
++            "version": "v2.0.1",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/vlucas/phpdotenv.git",
++                "reference": "91064290f5b53a09bdff1b939d7f69fb0e7531b5"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/91064290f5b53a09bdff1b939d7f69fb0e7531b5",
++                "reference": "91064290f5b53a09bdff1b939d7f69fb0e7531b5",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=5.3.2"
++            },
++            "require-dev": {
++                "phpunit/phpunit": "~4.0"
++            },
++            "type": "library",
++            "autoload": {
++                "psr-4": {
++                    "Dotenv\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "BSD"
++            ],
++            "authors": [
++                {
++                    "name": "Vance Lucas",
++                    "email": "vance@vancelucas.com",
++                    "homepage": "http://www.vancelucas.com"
++                }
++            ],
++            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
++            "homepage": "http://github.com/vlucas/phpdotenv",
++            "keywords": [
++                "dotenv",
++                "env",
++                "environment"
++            ],
++            "time": "2015-05-30 16:15:01"
+         }
+     ],
+     "packages-dev": [],
+diff --git a/web/index.php b/web/index.php
+index 61e7314..b090513 100644
+--- a/web/index.php
++++ b/web/index.php
+@@ -4,13 +4,15 @@ use Symfony\Component\Debug\Debug;
+ 
+ umask(0000);
+ 
+-// configuration
+-$env = 'dev';
+-$debug = true;
+-
+ $loader = require_once __DIR__.'/../config/autoload.php';
+ require_once __DIR__.'/../AppKernel.php';
+ 
++// load the environmental variables
++$dotenv = new Dotenv\Dotenv(__DIR__.'/../');
++$dotenv->load();
++$env = $_SERVER['SYMFONY_ENV'];
++$debug = $_SERVER['SYMFONY_DEBUG'];
++
+ if ($debug) {
+     Debug::enable();
+ }
