@@ -1,12 +1,3 @@
-diff --git a/.gitignore b/.gitignore
-index d74d526..37e5ad8 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -2,3 +2,4 @@
- /cache/
- .env
- /web/bundles
-+/logs
 diff --git a/AppKernel.php b/AppKernel.php
 index 0767bcc..babd47c 100644
 --- a/AppKernel.php

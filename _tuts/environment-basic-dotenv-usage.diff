@@ -8,13 +8,14 @@ index 0000000..b51575d
 +SYMFONY_ENV=dev
 +SYMFONY_DEBUG=1
 diff --git a/.gitignore b/.gitignore
-index aaeec82..18f5aa5 100644
+index e6ad5ed..7e6f35b 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -1,2 +1,3 @@
+@@ -1,3 +1,4 @@
  /vendor/
  /cache/
-+.env
+ /logs/
++/.env
 diff --git a/composer.json b/composer.json
 index 24074d0..e2b5e6a 100644
 --- a/composer.json
