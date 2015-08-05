@@ -23,21 +23,19 @@ S3_BUCKET="dotenv"
 SECRET_KEY="souper_seekret_key"
 ```
 
-This library grabs those values and turns them into environment variables. When
-it reads these, we'll suddenly have an `S3_BUCKET` environment variable. In our app,
-when we need some config - like whether we're in debug mode, the database password
-or the S3 bucket - we read from the environment variables. And now that our app is
-reading from environment variables, when you deploy, you can set those variables
-in two different ways. First, you can have a file like this - that'll set those
-environment varaibles just like normal. Or second, you can set the variables via
-something like your web server configuration. If you use Heroku, they also have a
-way to set environment variables. The point is that your app isn't bound to a specific
-configuration file - it's just reading environment variables, which is a pretty
-standard way of setting config.
+This library reads these values and turns `S3_BUCKET` and `SECRET_KEY` into
+environment variables. Then, in our app, whenever we need some configuration -
+like whether we're in debug mode, the database password or the S3 bucket -
+we'll read from the environment variables. When you eventually deploy, you can set
+those variables in two different ways. First, you can have a `.env` file. Or
+second, you can set the variables via something like your web server configuration.
+Some platforms - like Heroku also have a way to set environment variables. The
+important point is that your app isn't bound to a configuration file: it's just
+reading environment variables, which is a pretty standard way of setting config.
 
 ## Our .env File
 
-The first things we want to set our the `$env` and `$debug` flags. Create a `.env`
+The first things we want to set are the `$env` and `$debug` flags. Create a `.env`
 file and say `SYMFONY_ENV=dev` and `SYMFONY_DEBUG=1`:
 
 [[[ code() ]]]
@@ -61,5 +59,5 @@ being used anywhere yet, but it may avoid a temporary cache error:
 Try it out: no web debug toolbar.
 
 Add `.env` to the `.gitignore` file - this shouldn't be committed. But copy `.env`
-to `.env.example` - we'll commit this so that new developers have something they
+to `.env.example` - we will commit this so that new developers have something they
 can use as a guide.
