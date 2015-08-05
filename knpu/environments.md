@@ -86,7 +86,7 @@ we'll keep all the environmental differences inside this Closure.
 ## Parameters in dotenv
 
 There's one more trick to configuration. In `config.yml` we have a `secret` key.
-This should be big, long, randon and - of course - secret. It should *not* be committed
+This should be big, long, random and - of course - secret. It should *not* be committed
 to the repository. Normally, we'd set this to a parameter - like %secret%. Then, we'd
 add this to our `parameters.yml` file and be done. But no more! We can do this
 in `.env`.
