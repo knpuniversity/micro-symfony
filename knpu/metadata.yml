@@ -27,3 +27,19 @@ tuts_hero:
     finish_step: 
 
 chapters:
+    bootstrap:
+        is_finished: false
+    app-bundle-annotations:
+        is_finished: false
+    container-twig:
+        is_finished: false
+    web-debug-toolbar:
+        is_finished: false
+    dotenv:
+        is_finished: false
+    environments:
+        is_finished: false
+    console:
+        is_finished: false
+    logging-tools:
+        is_finished: false
