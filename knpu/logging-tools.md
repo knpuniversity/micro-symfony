@@ -20,9 +20,9 @@ So, step 1 is to install it. At your terminal, run `composer require symfony/mon
 composer require symfony/monolog-bundle
 ```
 
-While we're waiting, Google for "symfony monologbundle". The first links is to its
+While we're waiting, Google for "symfony monologbundle". The first link is to its
 [GitHub page](https://github.com/symfony/MonologBundle), which basically just points
-you to read our [official documentation](http://symfony.com/doc/current/cookbook/logging/monolog.html)
+you to read the [official documentation](http://symfony.com/doc/current/cookbook/logging/monolog.html)
 on Symfony.
 
 Normally, Symfony users already have this bundle installed in their project. So we
@@ -33,8 +33,8 @@ we need to enable it in `AppKernel`: new `MonologBundle`:
 
 And third - if required - we need to configure the bundle. For that, go back one
 more time to the Standard Edition and find the [app/config/config_prod.yml](https://github.com/symfony/symfony-standard/blob/2.8/app/config/config_prod.yml)
-file. Copy most of its `monolog` configuration. Open up our `config.yml` and paste
-it in. Change `action_level` to debug to log everything.
+file. Copy most of its `monolog` configuration, it's good stuff! Open up our 
+`config.yml` and paste it in. Change `action_level` to debug to log everything.
 
 [[[ code('') ]]]
 
@@ -50,7 +50,7 @@ Clear the screen and refresh. Great - it's logging *a lot* of things.
 ## Controlling action_level
 
 We'll probably *not* want to log *everything* on production like this. So, we need
-a way to contro the `action_level`. Let's use a parameter: set it to `%log_action_level%`:
+a way to control the `action_level`. Let's use a parameter: set it to `%log_action_level%`:
 
 [[[ code('') ]]]
 
@@ -64,13 +64,13 @@ And immediately copy this line into `.env.example`:
 
 [[[ code('') ]]]
 
-Clear the logs again and refresh. The logs are still *very* verbose. Now change the
+Clear the logs again and refresh. They're still *very* verbose. Change the
 level to `error`:
 
 [[[ code('') ]]]
 
 Clear the logs and refresh. Hey, *nothing* in the logs: there weren't any errors.
-Now try a 404 page. Now, *all* the logs from the request show up as expected. That's
+Try a 404 page. Perfect, *all* the logs from the request show up as expected. That's
 the job of the `fingers_crossed` handler: don't show me any logs, unless there's
 at least one entry that's an `error` level or higher. Then I want everything.
 
