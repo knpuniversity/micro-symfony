@@ -26,11 +26,11 @@ the `$env` and `$debug` lines and paste our stuff:
 
 [[[ code('') ]]]
 
-Now, instead of passing a `--env=prod` flag to change the environment, this reads
+Instead of passing a `--env=prod` flag to change the environment, this reads
 the `.env` file like normal. Let's try it!
 
 If you're on UNIX, make this executable with a `chmod +x`. Then run `./console` or
-`php console` in Windows:
+in Windows `php console`:
 
 ```bash
 chmod +x console
