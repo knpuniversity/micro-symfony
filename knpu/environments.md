@@ -1,7 +1,7 @@
 # Environments
 
 We're kind of abusing the debug flag: it's mostly used to tell Symfony if it should
-hide/show errors. If you want control how your app behaves while developing versus
+hide/show errors. If you want to control how your app behaves while developing versus
 on production, that's normally done with environments: the `prod` environment will
 turn on caching and turn off debugging tools. The `dev` environment will do the
 opposite.
@@ -11,7 +11,7 @@ is still being loaded. That's a bit wasteful: why not only instantiate this in t
 `dev` environment?
 
 Add `if $this->getEnvironment() == 'dev'`: let's only load the bundle in that scenario.
-Change `.env` back to ENV `dev` and DEBUG 1. Refresh now: no issues.
+Change `.env` back to ENV equals `dev` and DEBUG equals 1. Refresh now: no issues.
 
 Now change the environment to `prod` and refresh. Ah, error:
 
@@ -23,7 +23,7 @@ in `config.yml`. The full stack Symfony framework solves this by having environm
 `config_dev.yml` and `config_prod.yml` files. But I've gotta keep things small. So,
 I'll show you a trick.
 
-Find `registerContainerConfiguration()` and add a new `$isDevEnv` that uses the
+Find `registerContainerConfiguration()` and add a new `$isDevEnv` variable that uses the
 same `getEnvironment()` method from before. Next, use `$loader->load()` to load more
 configuration. But instead of passing it a file, pass it a Closure that accepts a
 `ContainerBuilder` argument. Add the `use` statement on top. Also add a `use` on
@@ -77,7 +77,7 @@ the router resource config.
 Remember, we're in the `prod` environment. Refresh. No errors, no web debug toolbar.
 Change the environment back to `dev` and refresh. Whoops: it doesn't like my `webprofiler`
 configuration because that's a typo! Make sure you have `web_profiler`. Now it's
-happy *and* we have the toolbar.
+happy, I'm happy *and* we have the toolbar.
 
 The power of the environment is that we can have two different sets of configuration
 right on one machine, and toggling between them is effortless. But to minimize files,
@@ -88,7 +88,7 @@ we'll keep all the environmental differences inside this Closure.
 There's one more trick to configuration. In `config.yml` we have a `secret` key.
 This should be big, long, randon and - of course - secret. It should *not* be committed
 to the repository. Normally, we'd set this to a parameter - like %secret%. Then, we'd
-add this to Symfony's `parameters.yml` file and be done. But no more! We can do this
+add this to our `parameters.yml` file and be done. But no more! We can do this
 in `.env`.
 
 If I add `SECRET = CHANGEME`, that'll create an environment variable called `SECRET`,
