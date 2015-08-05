@@ -1,13 +1,13 @@
 # AppBundle, Routing and Annotations
 
-Next, we need to build a route and create a page. But I want to do this with as few
-files as possible.
+Now, we need to build a route and create a page. But I want to do this with as few
+files as possible. Remember, we're going for micro here!
 
 In Symfony, your PHP code lives in a bundle. But actually, you don't *need* a bundle
 at all: you could code entirely without one. And this could give us one less file.
 
 In practice, *not* having a bundle complicates a few things. So, we *will* create
-one here, but if you're curious about the approach, ask me, or read our
+one here, but if you're curious about the approach, ask me in the comments, or read our
 [AppBundle](http://knpuniversity.com/blog/AppBundle) blog post that talks about this.
 
 ## Creating AppBundle
@@ -25,17 +25,16 @@ Activate this in `AppKernel` with new `AppBundle/AppBundle()`:
 ## Routing
 
 Cool - that's the last time you'll need to do that. Now let's create a page. Open
-`routing.yml`. I want to keep things as small as possible: minimizing code and especially
-minimizing files. So I'll use annotation routing. If you prefer YAML, you can start
-adding your routes here, point them to controller classes and be on your way.
+`routing.yml`. To minimize the number of files I need to touch I'll use annotation 
+routing. If you prefer YAML, you can start adding your routes here, point them to 
+controller classes and be on your way.
 
 For us, add an import: `resource: @AppBundle/Controller` with `type: annotation`:
 
 [[[ code('3f75ab838c') ]]]
 
-In `AppBundle`, create the `Controller` directory and a new class in there called...
-how about... `MighyMouseController` after something else that's small, but can kick
-butt:
+In `AppBundle`, create the `Controller` directory and a new class in there called
+`MighyMouseController` in honor of another small, but powerful thing.
 
 [[[ code('') ]]]
 
@@ -51,13 +50,13 @@ method, finish things with `@Route("/")`:
 
 ## Autoloading
 
-Let's see if things work. Error!
+Let's see if things work. Error! Where are you when we need you Mighty Mouse?
 
     Attempted to load class "AppBundle" from namespace AppBundle.
 
 The autoloader doesn't know that we have classes living inside the `AppBundle` directory.
 In a traditional Symfony project, there's a pre-made `autoload` section in `composer.json`
-that takes care of this for us. We need to do this manually.
+that takes care of this for us. We on the other hand need to do this manually.
 
 Add an `autoload` section, with a `psr-4` section below it. Inside, we need just one
 entry `AppBundle\\` mapped to `AppBundle/`:
@@ -85,9 +84,9 @@ Try it again. Excellent - the next error!
     The annotation "@Sensio\Bundle\FrameworkExtraBundle\Configuration\Route"
     ... does not exist.
 
-It's doesn't see the `Route` annotation class - it's almost as if we forgot the
-`use` statement. If you use annotations in a project, you need one extr autoloading
-stuff.
+It doesn't see the `Route` annotation class - it's almost as if we forgot the
+`use` statement. If you use annotations in a project, you need one extra autoload
+line.
 
 In the `config/` directory, create an `autoload.php` file. Go back to the Standard
 Edition code so we can cheat off of it. Find `app/autoload.php` and copy its contents.
