@@ -23,12 +23,12 @@ extend the base template. We don't have a base template yet, but we will soon. I
 
 Now add `base.html.twig` in `Resources/views. Let's steal again from the
 Standard Edition. Find `app/Resources/views/base.html.twig`, copy it, and paste it
-in our `base.html.twig`:
+in ours:
 
 [[[ code('') ]]]
 
 Ok, give it a try. Unable to find template "mighty_mouse/rescue.html.twig". Hmm
-I bet I have a typo. Yep, my directory was called `might_mouse`. Fix that and try
-again. It's alive!
+I bet I have a typo. Yep, my directory was called `might_mouse`. I went a bit to micro
+on the name there. Fix that and try again. It's alive!
 
 Now, let's add the web debug toolbar.
