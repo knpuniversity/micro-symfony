@@ -36,19 +36,19 @@ For us, add an import: `resource: @AppBundle/Controller` with `type: annotation`
 In `AppBundle`, create the `Controller` directory and a new class in there called
 `MighyMouseController` in honor of another small, but powerful thing.
 
-[[[ code('') ]]]
+[[[ code('c06676d97b') ]]]
 
 Add `public function rescueAction()` and return a `new Response()`: "Here I come
 to save the day!":
 
-[[[ code('') ]]]
+[[[ code('560383867e') ]]]
 
 For routing, it's like normal: add the `use` statement for `Route`. Then above the
 method, finish things with `@Route("/")`:
 
-[[[ code('') ]]]
+[[[ code('bf41dfb2e1') ]]]
 
-## Autoloading
+## Autoloading!
 
 Let's see if things work. Error! Where are you when we need you Mighty Mouse?
 
@@ -75,7 +75,6 @@ composer dump-autoload
 ```
 
 You don't normally need to run this - it happens after a composer install or update.
-
 
 ## Autoloading Annotations
 
