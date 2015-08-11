@@ -31,7 +31,7 @@ that, you only need `symfony/symfony`.
 
 Our blank project now has 1 file - `composer.json` - with just 2 dependencies:
 
-[[[ code('') ]]]
+[[[ code('a1b9631172') ]]]
 
 Go back to run `composer install`:
 
