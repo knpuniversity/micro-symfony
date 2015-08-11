@@ -29,14 +29,14 @@ Normally, Symfony users already have this bundle installed in their project. So 
 need to do 3 extra steps. First, we needed to grab it with composer. Done! Second,
 we need to enable it in `AppKernel`: new `MonologBundle`:
 
-[[[ code('') ]]]
+TODO - Code will be added when this chapter is ready!
 
 And third - if required - we need to configure the bundle. For that, go back one
 more time to the Standard Edition and find the [app/config/config_prod.yml](https://github.com/symfony/symfony-standard/blob/2.8/app/config/config_prod.yml)
 file. Copy most of its `monolog` configuration, it's good stuff! Open up our 
 `config.yml` and paste it in. Change `action_level` to debug to log everything.
 
-[[[ code('') ]]]
+TODO - Code will be added when this chapter is ready!
 
 Refresh! No errors. *And* we suddenly have a `logs` directory with a `dev.log` file
 in it. Run `tail -f` on that to watch it:
@@ -52,22 +52,22 @@ Clear the screen and refresh. Great - it's logging *a lot* of things.
 We'll probably *not* want to log *everything* on production like this. So, we need
 a way to control the `action_level`. Let's use a parameter: set it to `%log_action_level%`:
 
-[[[ code('') ]]]
+TODO - Code will be added when this chapter is ready!
 
 And of course if we try it now, we see "non-existent parameter log_action_level".
 How can we add it? You already know: go to `.env` and add `SYMFONY__LOG_ACTION_LEVEL`:
 Symfony will lowercase that before making it a parameter. Set it to `debug`:
 
-[[[ code('') ]]]
+TODO - Code will be added when this chapter is ready!
 
 And immediately copy this line into `.env.example`:
 
-[[[ code('') ]]]
+TODO - Code will be added when this chapter is ready!
 
 Clear the logs again and refresh. They're still *very* verbose. Change the
 level to `error`:
 
-[[[ code('') ]]]
+TODO - Code will be added when this chapter is ready!
 
 Clear the logs and refresh. Hey, *nothing* in the logs: there weren't any errors.
 Try a 404 page. Perfect, *all* the logs from the request show up as expected. That's
@@ -85,7 +85,7 @@ from Symfony 2.6. Right now, it gives us an UndefinedFunctionException:
 Ok, this works in Symfony normally, where does it come from? It comes from a DebugBundle.
 Head to `AppKernel` and enable it in the `dev` environment: `new DebugBundle()`:
 
-[[[ code() ]]]
+TODO - Code will be added when this chapter is ready!
 
 Try it again. The page loads, and in the web debug toolbar, we see the dumped object.
 

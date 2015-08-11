@@ -29,7 +29,7 @@ configuration. But instead of passing it a file, pass it a Closure that accepts 
 `ContainerBuilder` argument. Add the `use` statement on top. Also add a `use` on
 the Closure so we have acccess to `$isDevEnv`:
 
-[[[ code() ]]]
+TODO - Code will be added when this chapter is ready!
 
 Now when Symfony loads, it'll load everything from `config.yml`, but it'll also call
 this function, and we can control whatever extra configuration we want. In `config.yml`,
@@ -40,21 +40,21 @@ But inside the Closure, we can say: if we're in the `dev` environment, then call
 `$container->loadFromExtension()` to pass in the configuration we want. Use `web_profiler`
 as the first agument and an array as the second with `toolbar => true`:
 
-[[[ code('') ]]]
+TODO - Code will be added when this chapter is ready!
 
 That should take care of the first error, so refresh. Closer - that error is gone,
 but now there's an error loading the `wdt.xml` routing file. Again, this makes sense:
 we're still loading some routes from `@WebProfilerBundle`, which simply doesn't exist
 in the `prod` environment:
 
-[[[ code() ]]]
+TODO - Code will be added when this chapter is ready!
 
 To fix this, create a `routing_dev.yml` file, move the two WebProfilerBundle imports
 there, and at the bottom, import the main `routing.yml` file.
 
 Now, do you remember where we told Symfony to load `routing.yml`? It's in `config.yml`:
 
-[[[ code('') ]]]
+TODO - Code will be added when this chapter is ready!
 
 In *all* cases, we're loading `routing.yml`. But now we need to do something conditional:
 in `dev`, we want to load `routing_dev.yml`. Otherwise, we want to load `routing.yml`.
@@ -63,13 +63,13 @@ to configure something environment-specific.
 
 If we're in the `dev` environment, call `$container->loadFromextension()`:
 
-[[[ code() ]]]
+TODO - Code will be added when this chapter is ready!
 
 This time, we need to tweak the `framework` configuration to override the
 `router.resource` value. In the array, add a `router` key, set it to an array, then
 add `resource` and set it to `routing_dev.yml`:
 
-[[[ code() ]]]
+TODO - Code will be added when this chapter is ready!
 
 In every environment, we load `config.yml`. But in the `dev` environment, we *override*
 the router resource config.

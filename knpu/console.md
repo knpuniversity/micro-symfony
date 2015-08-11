@@ -11,20 +11,20 @@ Let's go steal it from the standard edition. On GitHub, head into the app direct
 open `console` and copy its contents. Now, put our new `console` file right at the
 root of the project and make sure PhpStorm formats it as a PHP file. Paste the contents:
 
-[[[ code('') ]]]
+TODO - Code will be added when this chapter is ready!
 
 Let's go to work: uncomment the `umask`. For the first `require_once`, we know that
 this should be `config/autoload.php`. And `AppKernel` lives right in this directory,
 so that's fine:
 
-[[[ code('') ]]]
+TODO - Code will be added when this chapter is ready!
 
 The biggest thing we need to change is the `$env` and `$debug` variables. Let's grab
 that code from `index.php`. PhpStorm is being weird and hiding my `web/` directory...
 now it's back. Copy the 4 dotenv lines from `index.php`. Now in `console`, delete
 the `$env` and `$debug` lines and paste our stuff:
 
-[[[ code('') ]]]
+TODO - Code will be added when this chapter is ready!
 
 Instead of passing a `--env=prod` flag to change the environment, this reads
 the `.env` file like normal. Let's try it!
@@ -40,7 +40,7 @@ chmod +x console
 That blows up with "Environment file .env not found". I forgot to update my `DotEnv`
 path since this file lives in the root. Make sure you pass it just `__DIR__`:
 
-[[[ code('') ]]]
+TODO - Code will be added when this chapter is ready!
 
 Try it now:
 
