@@ -1,7 +1,7 @@
-diff --git a/AppBundle/Controller/DefaultController.php b/AppBundle/Controller/DefaultController.php
-index 776d7bc..a69979a 100644
---- a/AppBundle/Controller/DefaultController.php
-+++ b/AppBundle/Controller/DefaultController.php
+diff --git a/AppBundle/Controller/MightyMouseController.php b/AppBundle/Controller/MightyMouseController.php
+index 2a5b756..db66838 100644
+--- a/AppBundle/Controller/MightyMouseController.php
++++ b/AppBundle/Controller/MightyMouseController.php
 @@ -2,16 +2,22 @@
  
  namespace AppBundle\Controller;
@@ -10,18 +10,18 @@ index 776d7bc..a69979a 100644
  use Symfony\Component\HttpFoundation\Response;
  use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  
--class DefaultController
-+class DefaultController extends ContainerAware
+-class MightyMouseController
++class MightyMouseController  extends ContainerAware
  {
      /**
       * @Route("/")
       */
-     public function homepage()
+     public function rescueAction()
      {
--        return new Response('HELLO!');
+-        return new Response('Here I come to save the day!');
 +        $html = $this->container->get('twig')->render(
-+            'default/homepage.twig',
-+            array('random' => rand(1, 100))
++            'mighty_mouse/rescue.html.twig',
++            array('quote' => 'Here I come to save the day!')
 +        );
 +
 +        return new Response($html);
@@ -47,14 +47,14 @@ index 0000000..9089212
 +    </body>
 +</html>
 \ No newline at end of file
-diff --git a/Resources/views/default/homepage.twig b/Resources/views/default/homepage.twig
+diff --git a/Resources/views/mighty_mouse/rescue.html.twig b/Resources/views/mighty_mouse/rescue.html.twig
 new file mode 100644
-index 0000000..f7f8ef2
+index 0000000..13ab389
 --- /dev/null
-+++ b/Resources/views/default/homepage.twig
++++ b/Resources/views/mighty_mouse/rescue.html.twig
 @@ -0,0 +1,5 @@
 +{% extends 'base.html.twig' %}
 +
 +{% block body %}
-+    <h1>Yay!</h1>
++    <h1>{{ quote }}</h1>
 +{% endblock %}

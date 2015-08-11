@@ -13,11 +13,11 @@ index 0000000..05123b6
 +class AppBundle extends Bundle
 +{
 +}
-diff --git a/AppBundle/Controller/DefaultController.php b/AppBundle/Controller/DefaultController.php
+diff --git a/AppBundle/Controller/MightyMouseController.php b/AppBundle/Controller/MightyMouseController.php
 new file mode 100644
-index 0000000..776d7bc
+index 0000000..2a5b756
 --- /dev/null
-+++ b/AppBundle/Controller/DefaultController.php
++++ b/AppBundle/Controller/MightyMouseController.php
 @@ -0,0 +1,17 @@
 +<?php
 +
@@ -26,14 +26,14 @@ index 0000000..776d7bc
 +use Symfony\Component\HttpFoundation\Response;
 +use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 +
-+class DefaultController
++class MightyMouseController
 +{
 +    /**
 +     * @Route("/")
 +     */
-+    public function homepage()
++    public function rescueAction()
 +    {
-+        return new Response('HELLO!');
++        return new Response('Here I come to save the day!');
 +    }
 +}
 diff --git a/AppKernel.php b/AppKernel.php
