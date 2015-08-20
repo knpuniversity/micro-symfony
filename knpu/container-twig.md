@@ -31,4 +31,10 @@ Ok, give it a try. Unable to find template "mighty_mouse/rescue.html.twig". Hmm
 I bet I have a typo. Yep, my directory was called `might_mouse`. I went a bit too micro
 on the name there. Fix that and try again. It's alive!
 
+***TIP
+After creating the `views/` directory for the first time, you'll need to clear
+your Symfony cache, or the template won't be found. That's probably a small Symfony
+bug, that hopefully we can fix!
+***
+
 Now, let's add the web debug toolbar.
