@@ -19,6 +19,10 @@ summary: |
     So if your next project is perfect for a micro-framework, you
     can still use Symfony.
 
+    Oh, and thanks to Benjamin Eberlei for his blog post and work - 
+    [Symfony All The Things (Web)](http://www.whitewashing.de/2014/10/26/symfony_all_the_things_web.html)
+    that served as motivation.
+
 illustration: micro-symfony.png
 hasVideoDownload: 0
 
