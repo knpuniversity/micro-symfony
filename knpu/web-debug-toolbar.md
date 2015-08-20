@@ -8,17 +8,17 @@ when and if we need them. The same is true for the web debug toolbar: it comes f
 the `WebProfilerBundle`. This lives in our project, but it's not enabled yet. Add
 it in `AppKernel` down below the others:
 
-TODO - Code will be added when this chapter is ready!
+[[[ code('dd4a012e00') ]]]
 
 Next, head into `config.yml` - we need a little bit of configuration. Add a `web_profiler`
 key with a `toolbar` option. Set this to `%kernel.debug%`:
 
-TODO - Code will be added when this chapter is ready!
+[[[ code('00c302993d') ]]]
 
 That's a special parameter that's equal to the `debug` argument we pass to `AppKernel` 
 in `index.php`:
 
-TODO - Code will be added when this chapter is ready!
+[[[ code('771a3723d3') ]]]
 
 Mostly, this flag is used to hide or show errors. But for now, we'll also use it
 to decide if the web debug toolbar should show up or not.
@@ -26,7 +26,7 @@ to decide if the web debug toolbar should show up or not.
 Also, under `framework`, add a `profiler` key with an `enabled` option that we'll
 also set to `%kernel.debug%`:
 
-TODO - Code will be added when this chapter is ready!
+[[[ code('29308a3ba0') ]]]
 
 We have debug set to true, so try it! No toolbar yet - just this nice error:
 
@@ -39,6 +39,6 @@ routes, and those routes need to be included for this all to work. On the Standa
 Edition, I already have the `app/config/routing_dev.yml` file open, because we need
 to copy the top two entries. Find `config/routing.yml` and paste those there:
 
-TODO - Code will be added when this chapter is ready!
+[[[ code('c9b80f3bbc') ]]]
 
 Try one more time. There's the toolbar, with all of the goods we love.
