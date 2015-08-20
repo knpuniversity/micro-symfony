@@ -1,3 +1,12 @@
+diff --git a/.env b/.env
+new file mode 100644
+index 0000000..b51575d
+--- /dev/null
++++ b/.env
+@@ -0,0 +1,3 @@
++# basic setup
++SYMFONY_ENV=dev
++SYMFONY_DEBUG=1
 diff --git a/.env.example b/.env.example
 new file mode 100644
 index 0000000..b51575d

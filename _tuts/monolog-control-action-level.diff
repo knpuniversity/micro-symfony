@@ -1,21 +1,23 @@
-diff --git a/AppKernel.php b/AppKernel.php
-index babd47c..b031b37 100644
---- a/AppKernel.php
-+++ b/AppKernel.php
-@@ -43,6 +43,11 @@ class AppKernel extends Kernel
-                     'resource' => '%kernel.root_dir%/config/'.$routingFilename,
-                 )
-             ));
-+
-+            $container->setParameter(
-+                'monolog_action_level',
-+                $isDevEnvironment ? 'debug' : 'error'
-+            );
-         });
-     }
- }
+diff --git a/.env b/.env
+index 7f787ac..bae39dd 100644
+--- a/.env
++++ b/.env
+@@ -4,3 +4,4 @@ SYMFONY_DEBUG=1
+ 
+ # parameters (SYMFONY__ is mapped to parameters)
+ SYMFONY__SECRET=CHANGEME
++SYMFONY__LOG_ACTION_LEVEL=debug
+diff --git a/.env.example b/.env.example
+index 7f787ac..bae39dd 100644
+--- a/.env.example
++++ b/.env.example
+@@ -4,3 +4,4 @@ SYMFONY_DEBUG=1
+ 
+ # parameters (SYMFONY__ is mapped to parameters)
+ SYMFONY__SECRET=CHANGEME
++SYMFONY__LOG_ACTION_LEVEL=debug
 diff --git a/config/config.yml b/config/config.yml
-index d20877d..0c84c6f 100644
+index d20877d..eeb9ffa 100644
 --- a/config/config.yml
 +++ b/config/config.yml
 @@ -9,7 +9,7 @@ monolog:
@@ -23,7 +25,7 @@ index d20877d..0c84c6f 100644
          main:
              type:         fingers_crossed
 -            action_level: debug
-+            action_level: %monolog_action_level%
++            action_level: %log_action_level%
              handler:      nested
          nested:
              type:  stream
