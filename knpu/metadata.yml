@@ -39,9 +39,9 @@ chapters:
     container-twig:
         video_key:  bqmyo3lpu0
     web-debug-toolbar:
-        is_finished: false
+        video_key:  qvipta2uz6
     dotenv:
-        is_finished: false
+        video_key:  gh6dmxctzq
     environments:
         is_finished: false
     console:
