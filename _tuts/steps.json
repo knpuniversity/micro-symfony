@@ -41,6 +41,11 @@
             "description": null
         },
         {
+            "id": "environment-change-to-prod",
+            "name": "Environment: Change to prod",
+            "description": null
+        },
+        {
             "id": "environment-conditional-debugging",
             "name": "Environment: Conditional debugging",
             "description": null
@@ -81,5 +86,5 @@
             "description": null
         }
     ],
-    "sha": "2e13a2523f34282d261c1d779307a4991e1ecaa3"
+    "sha": "1313e10b5d8739fb90fdf6bae22698cead1a0cb0"
 }

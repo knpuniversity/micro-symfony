@@ -1,0 +1,10 @@
+diff --git a/.env b/.env
+index b51575d..a218ae2 100644
+--- a/.env
++++ b/.env
+@@ -1,3 +1,3 @@
+ # basic setup
+-SYMFONY_ENV=dev
+-SYMFONY_DEBUG=1
++SYMFONY_ENV=prod
++SYMFONY_DEBUG=0
