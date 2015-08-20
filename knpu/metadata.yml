@@ -43,8 +43,8 @@ chapters:
     dotenv:
         video_key:  gh6dmxctzq
     environments:
-        is_finished: false
+        video_key:  9hf5jonwkq
     console:
-        is_finished: false
+        video_key:  64odhcj8uh
     logging-tools:
-        is_finished: false
+        video_key:  0fwr1fd3vw
