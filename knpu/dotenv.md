@@ -38,16 +38,18 @@ reading environment variables, which is a pretty standard way of setting config.
 The first things we want to set are the `$env` and `$debug` flags. Create a `.env`
 file and say `SYMFONY_ENV=dev` and `SYMFONY_DEBUG=1`:
 
-[[[ code() ]]]
+[[[ code('8d5e2baf75') ]]]
 
 Remove the old variables in `index.php`. Replace it with `$dotenv = new DotEnv\DotEnv()`.
 The argument is the directory where the `.env` file lives - it's actually up one
 directory from here. Then, call `$dotenv->load()`:
 
-[[[ code() ]]]
+[[[ code('a6369d30f7') ]]]
 
 At this point, those two flags have been set as environment variables. That means
-we can say `$env = $_SERVER['SYMFONY_ENV'];` and `$debug = $_SERVER['SYMFONY_DEBUG'];`.
+we can say `$env = $_SERVER['SYMFONY_ENV'];` and `$debug = $_SERVER['SYMFONY_DEBUG'];`:
+
+[[[ code('ed50ab99f6') ]]]
 
 Go back and refresh the new setup - we should still see the toolbar. Yep, there it
 is. But now go back to `.env` and set `SYMFONY_DEBUG` to 0. Because of `config.yml`,
