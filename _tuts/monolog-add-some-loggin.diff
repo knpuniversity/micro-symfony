@@ -1,5 +1,5 @@
 diff --git a/AppKernel.php b/AppKernel.php
-index 0767bcc..babd47c 100644
+index 4f3288c..e9e9414 100644
 --- a/AppKernel.php
 +++ b/AppKernel.php
 @@ -12,6 +12,7 @@ class AppKernel extends Kernel
@@ -187,10 +187,10 @@ index 7f58074..d999633 100644
              "version": "v2.7.2",
              "source": {
 diff --git a/config/config.yml b/config/config.yml
-index bd9e728..d20877d 100644
+index b234eca..40eee61 100644
 --- a/config/config.yml
 +++ b/config/config.yml
-@@ -4,3 +4,14 @@ framework:
+@@ -6,3 +6,14 @@ framework:
          engines: [twig]
      profiler:
          enabled: %kernel.debug%

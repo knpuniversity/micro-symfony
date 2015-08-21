@@ -17,10 +17,10 @@ index 7f787ac..bae39dd 100644
  SYMFONY__SECRET=CHANGEME
 +SYMFONY__LOG_ACTION_LEVEL=debug
 diff --git a/config/config.yml b/config/config.yml
-index d20877d..eeb9ffa 100644
+index 40eee61..2f3e565 100644
 --- a/config/config.yml
 +++ b/config/config.yml
-@@ -9,7 +9,7 @@ monolog:
+@@ -11,7 +11,7 @@ monolog:
      handlers:
          main:
              type:         fingers_crossed

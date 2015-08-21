@@ -23,13 +23,13 @@ index b51575d..7f787ac 100644
 +# parameters (SYMFONY__ is mapped to parameters)
 +SYMFONY__SECRET=CHANGEME
 diff --git a/config/config.yml b/config/config.yml
-index cb330be..bd9e728 100644
+index 0115e28..b234eca 100644
 --- a/config/config.yml
 +++ b/config/config.yml
 @@ -1,5 +1,5 @@
  framework:
 -    secret: ABC123
 +    secret: %secret%
+     router:
+         resource: '%kernel.root_dir%/config/routing.yml'
      templating:
-         engines: [twig]
-     profiler:

@@ -1,5 +1,5 @@
 diff --git a/AppKernel.php b/AppKernel.php
-index 3ae035d..0767bcc 100644
+index 3ae035d..4f3288c 100644
 --- a/AppKernel.php
 +++ b/AppKernel.php
 @@ -2,6 +2,7 @@
@@ -21,7 +21,7 @@ index 3ae035d..0767bcc 100644
  
          return $bundles;
      }
-@@ -22,5 +25,23 @@ class AppKernel extends Kernel
+@@ -22,5 +25,24 @@ class AppKernel extends Kernel
      public function registerContainerConfiguration(LoaderInterface $loader)
      {
          $loader->load(__DIR__.'/config/config.yml');
@@ -36,25 +36,21 @@ index 3ae035d..0767bcc 100644
 +                ));
 +            }
 +
-+            $routingFilename = $isDevEnvironment ? 'routing_dev.yml' : 'routing.yml';
-+            $container->loadFromExtension('framework', array(
-+                'router' => array(
-+                    'resource' => '%kernel.root_dir%/config/'.$routingFilename,
-+                )
-+            ));
++            if ($isDevEnvironment) {
++                $container->loadFromExtension('framework', array(
++                    'router' => array(
++                        'resource' => '%kernel.root_dir%/config/routing_dev.yml',
++                    )
++                ));
++            }
 +        });
      }
  }
 diff --git a/config/config.yml b/config/config.yml
-index 5a83e79..cb330be 100644
+index 5a83e79..0115e28 100644
 --- a/config/config.yml
 +++ b/config/config.yml
-@@ -1,11 +1,6 @@
- framework:
-     secret: ABC123
--    router:
--        resource: '%kernel.root_dir%/config/routing.yml'
-     templating:
+@@ -6,6 +6,3 @@ framework:
          engines: [twig]
      profiler:
          enabled: %kernel.debug%
