@@ -29,14 +29,14 @@ Normally, Symfony users already have this bundle installed in their project. So 
 need to do 3 extra steps. First, we needed to grab it with composer. Done! Second,
 we need to enable it in `AppKernel`: new `MonologBundle`:
 
-TODO - Code will be added when this chapter is ready!
+[[[ code('ca1a2cd27e') ]]]
 
 And third - if required - we need to configure the bundle. For that, go back one
 more time to the Standard Edition and find the [app/config/config_prod.yml](https://github.com/symfony/symfony-standard/blob/2.8/app/config/config_prod.yml)
 file. Copy most of its `monolog` configuration, it's good stuff! Open up our 
 `config.yml` and paste it in. Change `action_level` to debug to log everything.
 
-TODO - Code will be added when this chapter is ready!
+[[[ code('42eb42c0f1') ]]]
 
 Refresh! No errors. *And* we suddenly have a `logs` directory with a `dev.log` file
 in it. Run `tail -f` on that to watch it:
@@ -52,22 +52,20 @@ Clear the screen and refresh. Great - it's logging *a lot* of things.
 We'll probably *not* want to log *everything* on production like this. So, we need
 a way to control the `action_level`. Let's use a parameter: set it to `%log_action_level%`:
 
-TODO - Code will be added when this chapter is ready!
+[[[ code('1b85844efc') ]]]
 
 And of course if we try it now, we see "non-existent parameter log_action_level".
 How can we add it? You already know: go to `.env` and add `SYMFONY__LOG_ACTION_LEVEL`:
 Symfony will lowercase that before making it a parameter. Set it to `debug`:
 
-TODO - Code will be added when this chapter is ready!
+[[[ code('d98c20b322') ]]]
 
 And immediately copy this line into `.env.example`:
 
-TODO - Code will be added when this chapter is ready!
+[[[ code('634a088448') ]]]
 
 Clear the logs again and refresh. They're still *very* verbose. Change the
-level to `error`:
-
-TODO - Code will be added when this chapter is ready!
+level to `error` in `.env`.
 
 Clear the logs and refresh. Hey, *nothing* in the logs: there weren't any errors.
 Try a 404 page. Perfect, *all* the logs from the request show up as expected. That's
@@ -77,7 +75,11 @@ at least one entry that's an `error` level or higher. Then I want everything.
 ## Enabling dump()
 
 Ok, there's one more thing I love that I'm missing. In the controller, add a 
-`dump($this->container->get('twig'))`. That's the new awesome `dump()` function
+`dump($this->container->get('twig'))`:
+
+[[[ code('1ffc0db874') ]]]
+
+That's the new awesome `dump()` function
 from Symfony 2.6. Right now, it gives us an UndefinedFunctionException:
 
     Attempted to call function `dump()`.
@@ -85,7 +87,7 @@ from Symfony 2.6. Right now, it gives us an UndefinedFunctionException:
 Ok, this works in Symfony normally, where does it come from? It comes from a DebugBundle.
 Head to `AppKernel` and enable it in the `dev` environment: `new DebugBundle()`:
 
-TODO - Code will be added when this chapter is ready!
+[[[ code('5469c85fb4') ]]]
 
 Try it again. The page loads, and in the web debug toolbar, we see the dumped object.
 
