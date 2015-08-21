@@ -54,10 +54,13 @@ is. But now go back to `.env` and set `SYMFONY_DEBUG` to 0. Because of `config.y
 this should turn the toolbar off. Change the environment to `prod` too - that's not
 being used anywhere yet, but it may avoid a temporary cache error:
 
-[[[ code() ]]]
+[[[ code('a2389908a0') ]]]
 
 Try it out: no web debug toolbar.
 
-Add `.env` to the `.gitignore` file - this shouldn't be committed. But copy `.env`
-to `.env.example` - we will commit this so that new developers have something they
-can use as a guide.
+Add `.env` to the `.gitignore` file - this shouldn't be committed:
+
+[[[ code('46bf4a2908') ]]]
+
+But copy `.env` to `.env.example` - we will commit this so that new developers have
+something they can use as a guide.
