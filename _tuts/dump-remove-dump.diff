@@ -1,12 +1,12 @@
 diff --git a/AppBundle/Controller/MightyMouseController.php b/AppBundle/Controller/MightyMouseController.php
-index 7401bae..db66838 100644
+index 51340c2..db66838 100644
 --- a/AppBundle/Controller/MightyMouseController.php
 +++ b/AppBundle/Controller/MightyMouseController.php
 @@ -18,8 +18,6 @@ class MightyMouseController  extends ContainerAware
              array('quote' => 'Here I come to save the day!')
          );
  
--        dump($this->container->get('twig'));
+-        dump($this->container);
 -
          return new Response($html);
      }
