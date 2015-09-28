@@ -33,18 +33,18 @@ tuts_hero:
 chapters:
     bootstrap:
         is_free:    true
-        video_key:  2nc37mfhac
+        video_key:  140091212
     app-bundle-annotations:
-        video_key:  746fzflduy
+        video_key:  140091218
     container-twig:
-        video_key:  bqmyo3lpu0
+        video_key:  140091219
     web-debug-toolbar:
-        video_key:  qvipta2uz6
+        video_key:  140091216
     dotenv:
-        video_key:  gh6dmxctzq
+        video_key:  140091213
     environments:
-        video_key:  9hf5jonwkq
+        video_key:  140091211
     console:
-        video_key:  64odhcj8uh
+        video_key:  140091214
     logging-tools:
-        video_key:  0fwr1fd3vw
+        video_key:  140091210
